@@ -2,8 +2,8 @@ import { FaArrowRight } from "react-icons/fa6";
 
 function Best_Sellings_Products() {
   return (
-    <div className="container">
-      <div className="row mt-4 mb-4">
+    <>
+      <div className="mt-4 mb-4">
         <div className="col-lg-3 col-md-4 col-sm-12">
           <div className="left_text text-center">
             <h1 style={{ fontFamily: "Poppins" }}>Best Selling Furnitures</h1>
@@ -28,7 +28,7 @@ function Best_Sellings_Products() {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 

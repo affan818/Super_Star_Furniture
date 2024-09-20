@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import "./shop.css";
 
 const Shop = () => {
+  const [count, setCount] = useState(0);
+
   return (
     <>
       <div className="container">
@@ -24,6 +26,76 @@ const Shop = () => {
               dolorum maxime, dignissimos ratione ducimus quas laborum aliquam
               alias possimus modi ipsa delectus quis suscipit.
             </p>
+            <div
+              className="d-flex"
+              style={{ gap: "10px", paddingBottom: "1rem" }}
+            >
+              <div
+                style={{
+                  backgroundColor: "#dba29e",
+                  width: "20px",
+                  height: "20px",
+                }}
+                className="rounded-circle "
+              ></div>
+              <div
+                style={{
+                  backgroundColor: "#5e5e05",
+                  width: "20px",
+                  height: "20px",
+                  border: "3px solid gray",
+                }}
+                className="rounded-circle"
+              ></div>
+              <div
+                style={{
+                  backgroundColor: "#8680c2",
+                  width: "20px",
+                  height: "20px",
+                }}
+                className="rounded-circle"
+              ></div>
+              <div
+                style={{
+                  backgroundColor: "#612f6b",
+                  width: "20px",
+                  height: "20px",
+                }}
+                className="rounded-circle"
+              ></div>
+            </div>
+            <div className="d-flex">
+              <div>{count}</div>
+              <div
+                className="btn"
+                onClick={() => {
+                  if (count == 10) {
+                    setCount();
+                  } else {
+                    setCount(count + 1);
+                  }
+                }}
+              >
+                +
+              </div>
+              <div className="btn" onClick={() => setCount(count - 1)}>
+                -
+              </div>
+              <button
+                className="btn"
+                style={{
+                  backgroundColor: "#008080",
+                  color: "#fff",
+                  width: "100",
+                  height: "50px",
+                  fontFamily: "Poppins",
+                  padding: "10px",
+                  margin: "auto",
+                }}
+              >
+                Add to cart
+              </button>
+            </div>
           </div>
           <div className="col">
             <img

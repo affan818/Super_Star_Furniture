@@ -1,11 +1,24 @@
-import React from "react";
-import homePageData from "../homepage_api.json";
-import Best_Sellings_Title from "../cards/Best_Sellings_Products";
+import React, { useEffect, useState } from "react";
+// import homePageData from "../homepage_api.json";
+import Best_Sellings_Title from "../cards/Best_Sellings_Title";
+import Best_Selling_Card from "../cards/Best_Selling_Card";
+import axios from "axios";
 
 import Products from "../products/Products";
-import Best_Selling_Card from "../cards/Best_Selling_Card";
 
 function Home() {
+  const [homePageData, setHomePageData] = useState({});
+
+  useEffect(() => {
+    const url = "http://localhost:5000/api/homepage";
+    axios(url)
+      .then((res) => {
+        setHomePageData(res.data[0]);
+      })
+      .catch((err) => {
+        console.log(`Error => ${err}`);
+      });
+  }, []);
   return (
     <>
       <div
@@ -31,7 +44,7 @@ function Home() {
               flex-column flex-md-row justify-content-center justify-content-md-center align-items-center mb-4"
               >
                 <div className="text-center ">
-                  <h4>{homePageData.banner.no_of_furnitures}+</h4>
+                  <h4>{homePageData.no_of_furnitures}+</h4>
                   <h6 style={{ fontFamily: "Poppins" }}>Furnitures</h6>
                 </div>
 
@@ -42,7 +55,7 @@ function Home() {
                 ></div>
 
                 <div className="text-center">
-                  <h4>{homePageData.banner.no_of_customers}+</h4>
+                  <h4>{homePageData.no_of_customers}+</h4>
                   <h6 style={{ fontFamily: "Poppins" }}>Customers</h6>
                 </div>
               </div>
@@ -77,17 +90,7 @@ function Home() {
           </div>
         </div>
         {/*card */}
-        <div className="row">
-          <Best_Sellings_Title />
-          {homePageData.best_selling.map((e, index) => (
-            <Best_Selling_Card
-              key={index}
-              img={e.image}
-              title={e.title}
-              price={e.price}
-            />
-          ))}
-        </div>
+        <Best_Selling_Card />
         <Products />
       </div>
     </>
