@@ -1,4 +1,5 @@
 import homePageData from "../homepage_api.json";
+import { Link } from "react-router-dom";
 
 function Products() {
   return (
@@ -9,7 +10,8 @@ function Products() {
             <h1>Our Products</h1>
             <p>There are some of our products</p>
           </div>
-          <div className="row row-cols-1 row-cols-md-4 g-4">
+          {/* Updated line for responsive columns */}
+          <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
             {homePageData.products.map((e, i) => (
               <div className="col" key={i}>
                 <div
@@ -21,6 +23,24 @@ function Products() {
                     <h5 className="card-title">{e.title}</h5>
                     <p className="card-text">{e.desc}</p>
                     <p className="text-center">{e.price}</p>
+                    <div
+                      className="btn d-flex align-items-center justify-content-center"
+                      style={{
+                        backgroundColor: "#008080",
+                        color: "#fff",
+                        height: "50px",
+                        fontFamily: "Poppins",
+                        fontSize: "1.25rem",
+                      }}
+                    >
+                      <Link
+                        to="/shop"
+                        className="text-white"
+                        style={{ textDecoration: "none" }}
+                      >
+                        shop Now
+                      </Link>
+                    </div>
                   </div>
                 </div>
               </div>

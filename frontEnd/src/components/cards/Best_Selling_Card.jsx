@@ -1,19 +1,23 @@
-import React from "react";
 import Best_Sellings_Title from "./Best_Sellings_Title";
 import homePageData from "../homepage_api.json";
 
 function Best_Selling_Card() {
   return (
-    <>
-      <div className="row">
-        <Best_Sellings_Title />
+    <div className="container mt-5">
+      <Best_Sellings_Title />
+      <div className="row g-3">
         {homePageData.best_selling.map((e, i) => (
-          <div key={i} className="col-md-3 lg-12 h-100">
+          <div key={i} className="col-lg-3 col-md-4 col-sm-6">
             <div
-              className="card h-100 "
+              className="card h-100 shadow-lg"
               style={{ border: "2px solid #008080" }}
             >
-              <img src={e.image} className="card-img-top" alt="Furniture 1 " />
+              <img
+                src={e.image}
+                className="card-img-top"
+                alt={e.title}
+                style={{ objectFit: "cover", height: "250px" }}
+              />
               <div className="card-body">
                 <h5
                   className="card-title text-center"
@@ -27,7 +31,7 @@ function Best_Selling_Card() {
           </div>
         ))}
       </div>
-    </>
+    </div>
   );
 }
 

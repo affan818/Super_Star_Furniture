@@ -1,6 +1,6 @@
 import { FaArrowRight } from "react-icons/fa6";
 
-function Best_Sellings_Products() {
+function Best_Sellings_Title() {
   return (
     <>
       <div className="mt-4 mb-4">
@@ -32,4 +32,4 @@ function Best_Sellings_Products() {
   );
 }
 
-export default Best_Sellings_Products;
+export default Best_Sellings_Title;
