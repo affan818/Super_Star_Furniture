@@ -23,11 +23,13 @@ const userSchema = mongoose.Schema({
 });
 
 const homePageSchema = mongoose.Schema({
-  no_of_customers: {
-    type: String,
-  },
-  no_of_furnitures: {
-    type: String,
+  banner: {
+    no_of_customers: {
+      type: String,
+    },
+    no_of_furnitures: {
+      type: String,
+    },
   },
 });
 
@@ -39,37 +41,11 @@ app.get("/api/homepage", async (req, res) => {
   res.json(homePageData);
 });
 
-app.post("/api/homepage", async (req, res) => {
-  await HomePageModel.create({
-    no_of_customers: req.body.no_of_customers,
-    no_of_furnitures: req.body.no_of_furnitures,
-  })
-    .then(() => {
-      res.send("data created");
-    })
-    .catch((err) => {
-      console.log(`ERROR>> ${err}`);
-    });
-});
-
 app.get("/api/users", async (req, res) => {
   const userData = await UsersModel.find({});
   res.json(userData);
 });
 
-app.post("/api/users", async (req, res) => {
-  await UsersModel.create({
-    firstName: req.body.firstName,
-    lastName: req.body.lastName,
-    email: req.body.email,
-  })
-    .then(() => {
-      console.log("created");
-    })
-    .catch((error) => {
-      console.log("Error" + error);
-    });
-});
 app.listen(port, () => {
   console.log(`server is running on port http://localhost:${port}`);
 });

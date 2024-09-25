@@ -7,6 +7,7 @@ const initialVal = 1;
 const Shop = () => {
   const [count, setCount] = useState(initialVal);
   const [activeColor, setActiveColor] = useState(null);
+
   const increement = (value) => setCount(count + value);
   const decreement = (value) => {
     if (count !== initialVal) {
@@ -61,31 +62,56 @@ const Shop = () => {
                 className="d-flex"
                 style={{ gap: "1rem", paddingBottom: "1rem" }}
               >
-                {Array.from({ length: 4 }).map((_, index) => (
-                  <div
-                    key={index}
-                    onClick={() => onColorChange(index + 1)}
-                    style={{
-                      backgroundColor: [
-                        "#827878",
-                        "#5e5e05",
-                        "#8680c2",
-                        "#612f6b",
-                      ][index],
-                      width: "20px",
-                      height: "20px",
-                      border:
-                        activeColor === index + 1
-                          ? `3px solid #eddfe2`
-                          : "none",
-                      boxShadow:
-                        activeColor === index + 1
-                          ? "0px 4px 6px rgba(0, 0, 0, 0.3)"
-                          : "none",
-                    }}
-                    className="rounded-circle"
-                  ></div>
-                ))}
+                <div
+                  onClick={() => onColorChange(1)}
+                  style={{
+                    backgroundColor: "#827878",
+                    width: "20px",
+                    height: "20px",
+                    border: activeColor == 1 ? "3px solid #eddfe2" : "none",
+                    boxShadow:
+                      activeColor === 1
+                        ? "0px 4px 6px rgba(0, 0, 0, 0.3)"
+                        : "none",
+                  }}
+                  className="rounded-circle"
+                ></div>
+                <div
+                  onClick={() => onColorChange(2)}
+                  style={{
+                    backgroundColor: "#5e5e05",
+                    width: "20px",
+                    height: "20px",
+                    border: activeColor == 2 ? "3px solid #eddfe2" : "none",
+                    boxShadow:
+                      activeColor == 2 ? "0px 4px 6px rgba(0,0,0,0.3)" : "none",
+                  }}
+                  className="rounded-circle"
+                ></div>
+                <div
+                  onClick={() => onColorChange(3)}
+                  style={{
+                    backgroundColor: "#8680c2",
+                    width: "20px",
+                    height: "20px",
+                    border: activeColor == 3 ? "3px solid #eddfe2" : "none",
+                    boxShadow:
+                      activeColor == 3 ? "0px,4px,6px rgba(0,0,0,0.3)" : "none",
+                  }}
+                  className="rounded-circle"
+                ></div>
+                <div
+                  onClick={() => onColorChange(4)}
+                  style={{
+                    backgroundColor: "#612f6b",
+                    width: "20px",
+                    height: "20px",
+                    border: activeColor == 4 ? "3px solid #eddfe2" : "none",
+                    boxShadow:
+                      activeColor == 4 ? "0px 4px 6px rgba(0,0,0,0.3)" : "none",
+                  }}
+                  className="rounded-circle"
+                ></div>
               </div>
 
               <div className="d-flex" style={{ gap: "3rem" }}>
