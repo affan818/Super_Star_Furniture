@@ -1,50 +1,21 @@
 import express from "express";
-import mongoose from "mongoose";
+import connectionDB from "./dataBase/connection.js";
 import cors from "cors";
-const app = express();
+import homePageRoute from "./routes/homePage-Route.js";
+// import shopPageRoute from "./routes/homePage-Route.js";
+
+import "dotenv/config";
+const url = process.env.DATABASE_URL;
 const port = 5000;
+const app = express();
+
+connectionDB(url);
 
 app.use(cors({ origin: "http://localhost:5173" }));
-
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
-
-mongoose
-  .connect(
-    "mongodb+srv://ansariaffan818:Affan818@ss-furniture.k124u.mongodb.net/SSF"
-  )
-  .then(() => console.log("database connected"))
-  .catch((error) => console.log(`error${error}`));
-
-const userSchema = mongoose.Schema({
-  firstName: { type: String, require: true },
-  lastName: { type: String, require: true },
-  email: { type: String, unique: true },
-});
-
-const homePageSchema = mongoose.Schema({
-  banner: {
-    no_of_customers: {
-      type: String,
-    },
-    no_of_furnitures: {
-      type: String,
-    },
-  },
-});
-
-const UsersModel = mongoose.model("users", userSchema);
-const HomePageModel = mongoose.model("homepage", homePageSchema);
-
-app.get("/api/homepage", async (req, res) => {
-  const homePageData = await HomePageModel.find({});
-  res.json(homePageData);
-});
-
-app.get("/api/users", async (req, res) => {
-  const userData = await UsersModel.find({});
-  res.json(userData);
-});
+app.use("/api", homePageRoute);
+// app.use("/api", shopPageRoute);
 
 app.listen(port, () => {
   console.log(`server is running on port http://localhost:${port}`);

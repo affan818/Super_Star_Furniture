@@ -1,10 +1,9 @@
-import homePageData from "../homepage_api.json";
 import { Link } from "react-router-dom";
 
-function Products() {
+function Products({ homePageData }) {
   return (
     <>
-      <div className="container">
+      <div className="container pb-5">
         <div className="row">
           <div className="col-lg-12 text-center">
             <h1>Our Products</h1>
@@ -12,14 +11,26 @@ function Products() {
           </div>
           {/* Updated line for responsive columns */}
           <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
-            {homePageData.products.map((e, i) => (
+            {homePageData.map((e, i) => (
               <div className="col" key={i}>
                 <div
                   className="card shadow"
-                  style={{ border: "2px solid #008080" }}
+                  style={{
+                    width: "300px",
+                    height: "500px",
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "space-between",
+                    border: "2px solid #008080",
+                  }}
                 >
-                  <img src={e.image} className="card-img-top" alt={e.title} />
-                  <div className="card-body">
+                  <div className="card-body" style={{ flex: "5" }}>
+                    <img
+                      src={e.image}
+                      className="card-img-top"
+                      style={{ height: "50%" }}
+                      alt={e.title}
+                    />
                     <h5 className="card-title">{e.title}</h5>
                     <p className="card-text">{e.desc}</p>
                     <p className="text-center">{e.price}</p>
@@ -34,7 +45,8 @@ function Products() {
                       }}
                     >
                       <Link
-                        to="/shop"
+                        to="/product_Details"
+                        state={{ productData: e }}
                         className="text-white"
                         style={{ textDecoration: "none" }}
                       >

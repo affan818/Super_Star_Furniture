@@ -84,10 +84,8 @@ function Home() {
               </div>
             </div>
           </div>
-
-          {/* Best Selling and Products sections */}
-          <Best_Selling_Card />
-          <Products />
+          <Best_Selling_Card homePageData={homePageData.best_selling} />
+          <Products homePageData={homePageData.products} />
         </div>
       )}
     </>

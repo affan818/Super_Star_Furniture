@@ -10,6 +10,7 @@ import {
   NoPage,
   Login,
   Layout,
+  Products_Details,
 } from "./components/index.js";
 import {
   createBrowserRouter,
@@ -23,6 +24,7 @@ const router = createBrowserRouter(
     <Route path="/" element={<Layout />}>
       <Route path="" element={<Home />} />
       <Route path="about" element={<About />} />
+      <Route path="product_details" element={<Products_Details />} />
       <Route path="contact" element={<Contact />} />
       <Route path="shop" element={<Shop />} />
       <Route path="register" element={<Register />} />
